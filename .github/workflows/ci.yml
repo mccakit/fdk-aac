@@ -214,3 +214,12 @@ jobs:
           cd ffmpeg
           PKG_CONFIG_PATH=$(pwd)/../prefix/lib/pkgconfig ./configure --enable-libfdk-aac --enable-nonfree
           make -j$(nproc)
+
+  check-archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - name: Check archive content
+        run: |
+          ./check-archive.sh
